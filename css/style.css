@@ -1,0 +1,323 @@
+/* Navigation Bar */
+.navbar {
+    background-color: #2c3e50;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between; /* Distribute items between left and right */
+    align-items: center; /* Vertically align items */
+    width: 100%; /* Make sure navbar takes full width */
+    box-sizing: border-box; /* Avoid margin issues */
+}
+
+/* Left section of the navbar (Home, Watchlist) */
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-left a {
+    color: white;
+    margin-right: 15px; /* Space between links */
+    font-size: 16px;
+}
+
+.navbar-left a:hover {
+    color: #1abc9c;
+}
+
+/* Right section of the navbar (Welcome, Logout, Search Form) */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px; /* Space between the elements in the right section */
+}
+
+/* Links and Welcome message in navbar-right */
+.navbar-right a,
+.navbar-right span {
+    color: white;
+    font-size: 16px;
+}
+
+.navbar-right a:hover {
+    color: #1abc9c;
+}
+
+/* Search Form Styling */
+.search-form {
+    display: flex;
+    margin-top: 500px;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.search-form input {
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 250px; /* Adjust width of the search input */
+}
+
+.search-form button {
+    padding: 5px 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background-color: #2980b9;
+}
+
+/* Movie List Container */
+.movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 10px;
+}
+
+/* Movie Card Styling */
+.movie-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.15);
+}
+
+.movie-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.movie-card h3 {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #2c3e50;
+}
+
+.movie-card p {
+    margin: 5px 0;
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.movie-card button {
+    background-color: #1abc9c;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.movie-card button:hover {
+    background-color: #16a085;
+    transform: scale(1.05);
+}
+
+/* Movie Details Page */
+.movie-details {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.movie-details h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #2c3e50;
+}
+
+.movie-poster img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.movie-info {
+    text-align: left;
+    margin: 20px 0;
+}
+
+.movie-info p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.movie-info strong {
+    color: #333;
+}
+
+.movie-details button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.movie-details button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+/* My Reviews Page */
+.my-reviews {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.my-reviews h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #2c3e50;
+}
+
+.reviews-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.review-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.15);
+}
+
+.review-card .movie-poster {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.review-card h3 {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #2c3e50;
+}
+
+.review-card p {
+    margin: 5px 0;
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.review-card small {
+    color: #888;
+    font-size: 12px;
+}
+
+.dashboard-container {
+    padding: 20px;
+    background-color: #f4f4f9;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.stats, .recent-users, .recent-activity {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: calc(33% - 20px);
+    text-align: center;
+}
+
+.stat-box h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.stat-box p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.chart-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.recent-users table, .recent-activity table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.recent-users th, .recent-activity th,
+.recent-users td, .recent-activity td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.recent-users th, .recent-activity th {
+    background-color: #f1f1f1;
+}
+
+.recent-users tr:nth-child(even), .recent-activity tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
