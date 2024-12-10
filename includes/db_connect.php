@@ -2,7 +2,7 @@
 // Database connection parameters
 $servername = "localhost";
 $username = "root";
-$password = "NuwzL5WpzWEN6v."; // Use the password set during MySQL setup
+$password = ""; // Use the password set during MySQL setup
 $dbname = "movie_rec";
 
 // Create connection
