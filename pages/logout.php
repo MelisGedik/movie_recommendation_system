@@ -15,7 +15,10 @@ session_destroy();
 
     <div class="center-content">
         <h1>You have successfully logged out.</h1>
-        <p><a href="login.php">Click here</a> to log in again or go back to the <a href="../index.php">homepage</a>.</p>
+        <p>
+            <a href="login.php">Log in again</a>
+            <a href="../index.php">Go to Homepage</a>
+        </p>
     </div>
 </body>
 </html>
