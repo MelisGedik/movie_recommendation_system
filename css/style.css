@@ -4,13 +4,12 @@
     color: white;
     padding: 15px 20px;
     display: flex;
-    justify-content: space-between; /* Distribute items between left and right */
-    align-items: center; /* Vertically align items */
-    width: 100%; /* Make sure navbar takes full width */
-    box-sizing: border-box; /* Avoid margin issues */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* Left section of the navbar (Home, Watchlist) */
 .navbar-left {
     display: flex;
     align-items: center;
@@ -18,7 +17,7 @@
 
 .navbar-left a {
     color: white;
-    margin-right: 15px; /* Space between links */
+    margin-right: 15px;
     font-size: 16px;
 }
 
@@ -26,15 +25,13 @@
     color: #1abc9c;
 }
 
-/* Right section of the navbar (Welcome, Logout, Search Form) */
 .navbar-right {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 15px; /* Space between the elements in the right section */
+    gap: 15px;
 }
 
-/* Links and Welcome message in navbar-right */
 .navbar-right a,
 .navbar-right span {
     color: white;
@@ -45,10 +42,8 @@
     color: #1abc9c;
 }
 
-/* Search Form Styling */
 .search-form {
     display: flex;
-    margin-top: 500px;
     align-items: center;
     background-color: white;
     border-radius: 5px;
@@ -60,7 +55,7 @@
     margin-right: 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    width: 250px; /* Adjust width of the search input */
+    width: 250px;
 }
 
 .search-form button {
@@ -91,7 +86,7 @@
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 20px;
-    width: 300px;
+    width: 200px; /* Reduced size */
     text-align: center;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -111,7 +106,7 @@
 
 .movie-card h3 {
     margin: 10px 0;
-    font-size: 18px;
+    font-size: 16px;
     color: #2c3e50;
 }
 
@@ -193,131 +188,118 @@
     transform: scale(1.05);
 }
 
-/* My Reviews Page */
-.my-reviews {
-    max-width: 900px;
-    margin: 30px auto;
-    padding: 30px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+/* Watchlist Header Alignment */
+.watchlist-section {
+    margin-bottom: 30px;
     text-align: center;
 }
 
-.my-reviews h1 {
-    margin-bottom: 20px;
-    font-size: 2rem;
-    color: #2c3e50;
-}
-
-.reviews-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-.review-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 20px;
-    width: 300px;
-    text-align: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.review-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.15);
-}
-
-.review-card .movie-poster {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
-
-.review-card h3 {
-    margin: 10px 0;
-    font-size: 18px;
-    color: #2c3e50;
-}
-
-.review-card p {
-    margin: 5px 0;
-    color: #7f8c8d;
-    font-size: 14px;
-}
-
-.review-card small {
-    color: #888;
-    font-size: 12px;
-}
-
-.dashboard-container {
-    padding: 20px;
-    background-color: #f4f4f9;
-}
-
-h1 {
-    font-size: 2rem;
-    color: #2c3e50;
-    margin-bottom: 20px;
-}
-
-.stats, .recent-users, .recent-activity {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.stat-box {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    width: calc(33% - 20px);
-    text-align: center;
-}
-
-.stat-box h2 {
-    font-size: 1.2rem;
+.watchlist-section h2 {
+    font-size: 1.8rem;
     margin-bottom: 10px;
+    color: #2c3e50;
 }
 
-.stat-box p {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.chart-section {
-    background-color: #fff;
+/* Centered Content Styling */
+.center-content, .confirmation-message {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #f9f9f9;
+    border-radius: 10px;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-.recent-users table, .recent-activity table {
-    width: 100%;
-    border-collapse: collapse;
+.center-content h1, .confirmation-message h1 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
 }
 
-.recent-users th, .recent-activity th,
-.recent-users td, .recent-activity td {
-    border: 1px solid #ddd;
-    padding: 10px;
+.center-content p, .confirmation-message p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.center-content a, .confirmation-message a {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.center-content a:hover, .confirmation-message a:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+/* Button Styling */
+.movie-card .button {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-top: 10px;
+    margin-right: 5px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.movie-card .button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+.movie-card .remove-button {
+    background-color: #e74c3c;
+}
+
+.movie-card .remove-button:hover {
+    background-color: #c0392b;
+}
+
+/* Styling for Rating and Review Section */
+.movie-card .rating-review-container {
+    margin-top: 10px;
     text-align: left;
 }
 
-.recent-users th, .recent-activity th {
-    background-color: #f1f1f1;
+.movie-card label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
 }
 
-.recent-users tr:nth-child(even), .recent-activity tr:nth-child(even) {
-    background-color: #f9f9f9;
+.movie-card select, 
+.movie-card textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.movie-card select:focus,
+.movie-card textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.movie-card textarea {
+    resize: none; /* Prevent resizing */
+    height: 60px;
 }
