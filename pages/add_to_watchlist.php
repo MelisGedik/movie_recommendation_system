@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_id = $_SESSION['user_id'];
     $movie_id = intval($_POST['movie_id']);
 
+    // Check if the movie is already in the watchlist
     $sql = "SELECT * FROM watchlist WHERE user_id = ? AND movie_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ii", $user_id, $movie_id);
@@ -25,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ii", $user_id, $movie_id);
         if ($stmt->execute()) {
-            $message = "Movie added to your watchlist.";
+            $message = "Movie added to your watchlist successfully!";
         } else {
             $message = "Failed to add the movie: " . $stmt->error;
         }
@@ -45,7 +46,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="confirmation-message">
         <h1><?php echo htmlspecialchars($message); ?></h1>
-        <p><a href="../index.php">Go back to Homepage</a> or <a href="watchlist.php">View Your Watchlist</a>.</p>
+        <p>
+            <a href="../index.php" class="button">Go Back to Homepage</a>
+            <a href="watchlist.php" class="button">View Your Watchlist</a>
+        </p>
     </div>
 </body>
 </html>
