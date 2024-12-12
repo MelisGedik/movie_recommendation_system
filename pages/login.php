@@ -1,4 +1,5 @@
 <?php
+// login.php
 include '../includes/db_connect.php';
 session_start();
 
@@ -16,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // If user found
     if ($result->num_rows == 1) {
         $user = $result->fetch_assoc();
-        
+
         // Verify password
         if (password_verify($password, $user['password'])) {
             // Set session variables for logged-in user
@@ -26,19 +27,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Redirect to the appropriate dashboard
             if ($user['role'] == 'admin') {
-                // If admin, redirect to the admin dashboard
                 header("Location: ../pages/admin_dashboard.php");
                 exit();
             } else {
-                // If user, redirect to the home page (or user dashboard)
                 header("Location: ../index.php");
                 exit();
             }
         } else {
-            echo "Invalid password.";
+            $error = "Invalid password.";
         }
     } else {
-        echo "No user found with this email.";
+        $error = "No user found with this email.";
     }
 }
 ?>
@@ -52,13 +51,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <?php include '../includes/navbar.php'; ?>
 
-    <h2>Login</h2>
-    <form method="POST" action="">
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
-        <button type="submit">Login</button>
-    </form>
+    <div class="center-content">
+        <h2>Login</h2>
+        <?php if (isset($error)): ?>
+            <p style="color: red;"><?php echo htmlspecialchars($error); ?></p>
+        <?php endif; ?>
+        <form method="POST" action="">
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <button type="submit" class="button">Login</button>
+        </form>
+    </div>
 </body>
 </html>
