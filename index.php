@@ -95,7 +95,7 @@ $top_rated_movies = $result->fetch_all(MYSQLI_ASSOC);
                 <h3><?php echo htmlspecialchars($movie['title']); ?></h3>
                 <p>Genre: <?php echo htmlspecialchars($movie['genre']); ?></p>
                 <p>Average Rating: <?php echo htmlspecialchars($movie['rating_avg']); ?></p>
-                <a href="pages/movie_details.php?id=<?php echo $movie['id']; ?>">View Details</a>
+                <a href="pages/movie_details.php?id=<?php echo $movie['id']; ?>" class="button">View Details</a>
             </div>
         <?php } ?>
     <?php } else { ?>
@@ -111,7 +111,7 @@ $top_rated_movies = $result->fetch_all(MYSQLI_ASSOC);
             <h3><?php echo htmlspecialchars($movie['title']); ?></h3>
             <p>Genre: <?php echo htmlspecialchars($movie['genre']); ?></p>
             <p>Average Rating: <?php echo htmlspecialchars($movie['rating_avg']); ?></p>
-            <a href="pages/movie_details.php?id=<?php echo $movie['id']; ?>">View Details</a>
+            <a href="pages/movie_details.php?id=<?php echo $movie['id']; ?>" class="button">View Details</a>
         </div>
     <?php } ?>
 </div>
