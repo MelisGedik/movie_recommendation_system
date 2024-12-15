@@ -83,7 +83,7 @@ $review_result = $review_stmt->get_result();
                     <option value="3">3</option>
                     <option value="4">4</option>
                     <option value="5">5</option>
-                </select><br>
+                </select><br><br>
                 <label for="review">Leave a review:</label><br>
                 <textarea name="review" id="review" rows="4" cols="50"></textarea><br>
                 <button type="submit">Submit Rating</button>
