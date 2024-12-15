@@ -43,15 +43,18 @@ if ($result === false) {
 
         <?php if ($result->num_rows > 0): ?>
             <div class="reviews-list">
-                <?php while ($review = $result->fetch_assoc()): ?>
-                    <div class="review-card">
-                        <img src="../<?php echo htmlspecialchars($review['poster_url']); ?>" alt="Movie Poster" class="movie-poster">
-                        <h3><?php echo htmlspecialchars($review['movie_title']); ?></h3>
-                        <p><strong>Rating:</strong> <?php echo htmlspecialchars($review['rating']); ?>/5</p>
+            <?php while ($review = $result->fetch_assoc()): ?>
+                <div class="review-card">
+                    <img src="../<?php echo htmlspecialchars($review['poster_url']); ?>" alt="Movie Poster" class="movie-poster">
+                    <h3><?php echo htmlspecialchars($review['movie_title']); ?></h3>
+                    <p><strong>Rating:</strong> <?php echo htmlspecialchars($review['rating']); ?>/5</p>
+                    <div class="review-text">
                         <p><strong>Review:</strong> <?php echo nl2br(htmlspecialchars($review['review'])); ?></p>
-                        <p><small>Reviewed on: <?php echo date('F j, Y, g:i a', strtotime($review['timestamp'])); ?></small></p>
                     </div>
-                <?php endwhile; ?>
+                    <p><small>Reviewed on: <?php echo date('F j, Y, g:i a', strtotime($review['timestamp'])); ?></small></p>
+                </div>
+            <?php endwhile; ?>
+
             </div>
         <?php else: ?>
             <p>You haven't written any reviews yet.</p>
