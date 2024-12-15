@@ -1,3 +1,5 @@
+<!-- Navbar -->
+
 <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -8,7 +10,6 @@ $base_path = (basename(dirname($_SERVER['PHP_SELF'])) === 'pages') ? '../' : '';
 ?>
 <div class="navbar">
     <div class="navbar-left">
-        <a href="<?php echo $base_path; ?>index.php">Home</a>
         
         <!-- If the user is an admin, show admin tools -->
         <?php if (isset($_SESSION['user_id']) && $_SESSION['role'] === 'admin'): ?>
@@ -18,6 +19,7 @@ $base_path = (basename(dirname($_SERVER['PHP_SELF'])) === 'pages') ? '../' : '';
             <a href="<?php echo $base_path; ?>pages/update_user_info.php">Update User Info</a>
         <?php elseif (isset($_SESSION['user_id'])): ?>
             <!-- If the user is not an admin, show user tools -->
+            <a href="<?php echo $base_path; ?>index.php">Home</a>
             <a href="<?php echo $base_path; ?>pages/watchlist.php">My Watchlist</a>
             <a href="<?php echo $base_path; ?>pages/profile.php">Profile</a>
         <?php endif; ?>
