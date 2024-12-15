@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // Fetch movies from the database for selection
-$sql = "SELECT id, title, genre FROM movies ORDER BY title ASC";
+$sql = "SELECT id, title, genre, poster_url FROM movies ORDER BY title ASC";
 $result = $conn->query($sql);
 ?>
 
@@ -59,6 +59,35 @@ $result = $conn->query($sql);
 <head>
     <title>Signup</title>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .movie-selection {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .movie-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 120px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 5px;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .movie-item img {
+            width: 80px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 3px;
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
     <?php include '../includes/navbar.php'; ?>
@@ -81,10 +110,13 @@ $result = $conn->query($sql);
             <input type="password" id="password" name="password" required><br><br>
 
             <label for="movies">Select Your Favorite Movies (7-10):</label><br>
-            <div style="max-height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 10px;">
+            <div class="movie-selection">
                 <?php while ($movie = $result->fetch_assoc()) { ?>
-                    <input type="checkbox" name="movies[]" value="<?php echo $movie['id']; ?>">
-                    <?php echo htmlspecialchars($movie['title'] . " (" . $movie['genre'] . ")"); ?><br>
+                    <div class="movie-item">
+                        <img src="../<?php echo htmlspecialchars($movie['poster_url']); ?>" alt="Poster">
+                        <input type="checkbox" name="movies[]" value="<?php echo $movie['id']; ?>">
+                        <span><?php echo htmlspecialchars($movie['title']); ?></span>
+                    </div>
                 <?php } ?>
             </div><br>
 
