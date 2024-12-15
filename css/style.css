@@ -1,262 +1,436 @@
+/* General Reset */
+body {
+    background-color: #080710;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+/* Background Shapes */
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.background .shape {
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.background .shape:first-child {
+    background: linear-gradient(#1845ad, #23a2f6);
+    left: -100px;
+    top: -100px;
+}
+
+.background .shape:last-child {
+    background: linear-gradient(to right, #ff512f, #f09819);
+    right: -100px;
+    bottom: -100px;
+}
+
 /* Navigation Bar */
 .navbar {
-    background-color: #2c3e50;
-    color: white;
-    padding: 15px 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    box-sizing: border-box;
+    padding: 15px 20px;
+    margin: 10px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.2);
 }
 
-.navbar-left {
-    display: flex;
-    align-items: center;
-}
-
-.navbar-left a {
+.navbar-left a,
+.navbar-right a {
     color: white;
-    margin-right: 15px;
+    text-decoration: none;
+    margin-right: 20px;
     font-size: 16px;
+    transition: color 0.3s ease;
 }
 
-.navbar-left a:hover {
-    color: #1abc9c;
-}
-
-.navbar-right {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 15px;
-}
-
-.navbar-right a,
-.navbar-right span {
-    color: white;
-    font-size: 16px;
-}
-
+.navbar-left a:hover,
 .navbar-right a:hover {
     color: #1abc9c;
 }
 
+/* Search Form */
 .search-form {
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 5px;
     padding: 5px;
+    backdrop-filter: blur(10px);
 }
 
 .search-form input {
-    padding: 5px;
-    margin-right: 5px;
+    padding: 8px;
+    border: none;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    outline: none;
     width: 250px;
 }
 
+.search-form input::placeholder {
+    color: #ccc;
+}
+
 .search-form button {
-    padding: 5px 10px;
-    background-color: #3498db;
+    padding: 8px 15px;
+    background-color: #23a2f6;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .search-form button:hover {
-    background-color: #2980b9;
+    background-color: #1845ad;
 }
 
 /* Movie List Container */
 .movie-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
     justify-content: center;
-    padding: 10px;
+    gap: 20px;
+    padding: 20px;
 }
 
 /* Movie Card Styling */
 .movie-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
     padding: 20px;
-    width: 200px; /* Reduced size */
     text-align: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: white;
+    max-width: 200px;
+    min-height: 380px; /* Ensure all cards have the same height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Align content and button */
+    box-sizing: border-box;
 }
 
 .movie-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3);
 }
 
 .movie-card img {
     max-width: 100%;
-    height: auto;
+    height: 250px; /* Keep poster heights consistent */
     border-radius: 10px;
-    margin-bottom: 15px;
+    object-fit: cover; /* Prevent cropping */
+    margin-bottom: 10px;
 }
 
 .movie-card h3 {
+    font-size: 1.1rem;
     margin: 10px 0;
-    font-size: 16px;
-    color: #2c3e50;
+    color: #23a2f6;
 }
 
 .movie-card p {
+    font-size: 0.9rem;
+    color: #ccc;
     margin: 5px 0;
-    color: #7f8c8d;
-    font-size: 14px;
 }
 
-.movie-card button {
-    background-color: #1abc9c;
+.movie-card .button {
+    background-color: #23a2f6;
     color: white;
-    padding: 10px;
-    font-size: 14px;
-    border: none;
+    padding: 8px 10px;
+    font-size: 0.9rem;
+    text-decoration: none;
     border-radius: 5px;
-    cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: auto; /* Push button to the bottom */
+    display: inline-block;
 }
 
-.movie-card button:hover {
-    background-color: #16a085;
+.movie-card .button:hover {
+    background-color: #1845ad;
     transform: scale(1.05);
 }
 
 /* Movie Details Page */
 .movie-details {
-    max-width: 900px;
-    margin: 30px auto;
-    padding: 30px;
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: rgba(255, 255, 255, 0.1); /* Dark translucent background */
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 800px;
+    margin: 30px auto;
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: white;
     text-align: center;
 }
 
 .movie-details h1 {
+    color: #23a2f6;
     margin-bottom: 20px;
     font-size: 2rem;
-    color: #2c3e50;
 }
 
 .movie-poster img {
-    max-width: 100%;
-    height: auto;
+    width: 90%;
+    max-width: 250px;
+    height: 90%;
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin: 20px auto;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
 }
 
 .movie-info {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #ccc;
     text-align: left;
-    margin: 20px 0;
 }
 
 .movie-info p {
     margin: 10px 0;
-    font-size: 16px;
-    color: #555;
+    line-height: 1.6;
 }
 
 .movie-info strong {
-    color: #333;
+    color: #23a2f6;
+}
+
+/* Review Form */
+.review-form {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 600px;
+    color: white;
+}
+
+.review-form label {
+    display: block;
+    margin-bottom: 20px;
+    color: #ccc;
+    font-weight: bold;
+}
+
+.review-form select,
+.review-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.review-form select:focus,
+.review-form textarea:focus {
+    outline: none;
+    border-color: #23a2f6;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+/* Review Section */
+.review {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    text-align: left;
+    color: white;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+}
+
+.review strong {
+    color: #23a2f6;
+}
+
+.review hr {
+    border: 0.5px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Review Container - Scrollable and Fixed Height */
+.movie-card .review-container {
+    max-height: 60px; /* Fixed height for the review */
+    overflow-y: auto; /* Vertical scrolling */
+    margin-bottom: 10px; /* Space before the button */
+    padding: 5px;
+    color: #ccc; /* Text color */
+    background-color: rgba(255, 255, 255, 0.05); /* Light background for contrast */
+    border-radius: 5px;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    scrollbar-width: thin; /* Firefox support */
+    scrollbar-color:#666d66 rgba(255, 255, 255, 0.1); /* Thumb and track color */
+}
+
+/* Review Card - Scrollable Review Section */
+.review-card .review-text {
+    max-height: 60px; /* Fixed height for the review */
+    overflow-y: auto; /* Add vertical scrolling */
+    overflow-x: hidden; /* Hide horizontal scrolling */
+    margin-bottom: 10px; /* Space before bottom text */
+    padding: 5px;
+    color: #ccc; /* Text color */
+    background-color: rgba(255, 255, 255, 0.05); /* Light contrast background */
+    border-radius: 5px;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    word-wrap: break-word; /* Ensure long words don't cause overflow */
+    scrollbar-width: thin; /* Firefox support */
+    scrollbar-color: #4caf50 rgba(255, 255, 255, 0.1); /* Scrollbar color */
+}
+
+.movie-details p {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 15px;
 }
 
 .movie-details button {
-    background-color: #3498db;
+    background-color: #23a2f6;
+    font-size: 1.1em;
     color: white;
-    padding: 10px 15px;
-    font-size: 16px;
     border: none;
+    margin: 10px 0;
     border-radius: 5px;
+    padding: 10px 15px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .movie-details button:hover {
-    background-color: #2980b9;
+    background-color: #1845ad;
     transform: scale(1.05);
 }
 
-/* Watchlist Header Alignment */
-.watchlist-section {
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.watchlist-section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-    color: #2c3e50;
-}
-
-/* Centered Content Styling */
-.center-content, .confirmation-message {
-    max-width: 600px;
+/* Centered Content */
+.center-content {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 500px;
     margin: 50px auto;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.2);
 }
 
-.center-content h1, .confirmation-message h1 {
-    font-size: 2rem;
-    color: #2c3e50;
+.center-content h2 {
+    color: #23a2f6;
     margin-bottom: 20px;
 }
 
-.center-content p, .confirmation-message p {
-    font-size: 1.2rem;
-    color: #555;
-    margin-bottom: 20px;
+.center-content p {
+    color: #ccc;
+    font-size: 1rem;
+    margin-bottom: 15px;
 }
 
-.center-content a, .confirmation-message a {
+.center-content .button {
     display: inline-block;
     padding: 10px 15px;
-    background-color: #3498db;
+    background-color: #23a2f6;
     color: white;
     border-radius: 5px;
     text-decoration: none;
-    font-size: 1rem;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.center-content a:hover, .confirmation-message a:hover {
-    background-color: #2980b9;
+.center-content .button:hover {
+    background-color: #1845ad;
     transform: scale(1.05);
 }
 
-/* Button Styling */
-.movie-card .button {
-    display: inline-block;
-    padding: 10px 15px;
+/* Rating and Review Form Styling */
+.rating-review-container {
+    background-color: rgba(255, 255, 255, 0.05); /* Subtle dark background */
+    padding: 8px;
+    border-radius: 8px;
     margin-top: 10px;
-    margin-right: 5px;
-    background-color: #3498db;
-    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    color: #ddd; /* Softer text color */
+    font-size: 0.9rem;
+}
+
+.rating-review-container label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ccc; /* Label text color */
+}
+
+/* Fix dropdown width and background */
+.rating-review-container select {
+    width: 100%; /* Full width */
+    padding: 6px 8px;
+    font-size: 0.9rem;
+    color: #ddd; /* Text color */
+    background-color: rgba(255, 255, 255, 0.1); /* Darker dropdown background */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.rating-review-container select:focus {
+    color: rgba(0, 0, 0, 1); /* Text color */
+    background-color: rgba(255, 255, 255, 0.1);
+    outline: none;
+    border-color: #23a2f6;
+    box-shadow: 0 0 5px rgba(35, 162, 246, 0.5);
+}
+
+/* Fix textarea size and background */
+.rating-review-container textarea {
+    width: 90%; /* Full width */
+    padding: 8px;
+    height: 60px;
+    font-size: 0.9rem;
+    color: #ddd; /* Text color */
+    background-color: rgba(255, 255, 255, 0.1); /* Dark background */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    resize: none; /* Disable resizing */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.rating-review-container textarea:focus {
+    outline: none;
+    border-color: #23a2f6;
+    box-shadow: 0 0 5px rgba(35, 162, 246, 0.5);
+}
+
+/* Buttons Styling */
+.movie-card button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    cursor: pointer;
     border: none;
     border-radius: 5px;
-    text-decoration: none;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    color: white;
+    background-color: #23a2f6;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-.movie-card .button:hover {
-    background-color: #2980b9;
+.movie-card button:hover {
+    background-color: #1845ad;
     transform: scale(1.05);
 }
 
@@ -268,38 +442,271 @@
     background-color: #c0392b;
 }
 
-/* Styling for Rating and Review Section */
-.movie-card .rating-review-container {
-    margin-top: 10px;
-    text-align: left;
-}
-
-.movie-card label {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 5px;
-    display: block;
-}
-
-.movie-card select, 
-.movie-card textarea {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
+/* Button Styling */
+.button {
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #23a2f6;
+    color: white;
+    border: none;
     border-radius: 5px;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-.movie-card select:focus,
-.movie-card textarea:focus {
+.button:hover {
+    background-color: #1a85d8;
+    transform: scale(1.05);
+}
+
+/* Remove Button */
+.button.remove-button {
+    background-color: #e74c3c; /* Red color */
+    color: white;
+    border: none;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.button.remove-button:hover {
+    background-color: #c0392b; /* Darker red on hover */
+    transform: scale(1.05);
+}
+
+/* Profile Container Styling */
+.profile-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: #ddd;
+    font-family: 'Poppins', sans-serif;
+}
+
+.profile-container h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #23a2f6;
+    margin-bottom: 30px;
+    text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Profile Card */
+.profile-card {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.profile-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #23a2f6;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 5px;
+}
+
+.profile-card p {
+    font-size: 1rem;
+    color: #ccc;
+    margin: 10px 0;
+}
+
+/* Profile Stats */
+.profile-stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.profile-stats div {
+    flex: 1;
+    padding: 10px;
+    color: #ddd;
+}
+
+.profile-stats p {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #aaa;
+}
+
+.profile-stats strong {
+    font-size: 2rem;
+    color: #23a2f6;
+    text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Actions Section */
+.profile-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.profile-actions .button {
+    display: inline-block;
+    margin: 10px 5px;
+    padding: 10px 15px;
+    background-color: #23a2f6;
+    color: white;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.profile-actions .button:hover {
+    background-color: #1845ad;
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* General Page Padding */
+body {
+    padding-left: 20px; /* Adds padding on the left */
+    box-sizing: border-box;
+}
+
+/* My Reviews Container */
+.my-reviews {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: #ddd;
+    font-family: 'Poppins', sans-serif;
+}
+
+.my-reviews h1 {
+    text-align: center;
+    color: #23a2f6;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.reviews-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.review-card {
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+}
+
+.review-card img {
+    width: 100%; /* Full width of the card */
+    max-height: 120px; /* Set a max height for consistency */
+    object-fit: contain; /* Ensures the image is scaled proportionally without cropping */
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.review-card h3 {
+    font-size: 1.2rem;
+    color: #23a2f6;
+    margin-bottom: 10px;
+}
+
+.review-card p {
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.review-card strong {
+    color: #f1c40f;
+}
+
+/* Update Profile Container */
+.update-profile-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: #ddd;
+    font-family: 'Poppins', sans-serif;
+}
+
+.update-profile-container h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #23a2f6;
+    text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.update-profile-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.update-profile-container label {
+    margin-bottom: 8px;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.update-profile-container input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ddd;
     outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    transition: all 0.3s ease;
 }
 
-.movie-card textarea {
-    resize: none; /* Prevent resizing */
-    height: 60px;
+.update-profile-container input:focus {
+    border: 2px solid #23a2f6;
+    box-shadow: 0 0 8px rgba(35, 162, 246, 0.5);
+}
+
+.update-profile-container button {
+    background-color: #23a2f6;
+    color: white;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.update-profile-container button:hover {
+    background-color: #1845ad;
+    transform: scale(1.05);
 }
