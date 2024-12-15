@@ -64,7 +64,9 @@ $not_watched_result = $not_watched_stmt->get_result();
                         <p>Genre: <?php echo htmlspecialchars($movie['genre']); ?></p>
                         <p>Release Date: <?php echo htmlspecialchars($movie['release_date']); ?></p>
                         <p>Your Rating: <?php echo htmlspecialchars($movie['rating']); ?></p>
-                        <p>Your Review: <?php echo htmlspecialchars($movie['review']); ?></p>
+                        <p>Your Review:</p>
+                        <div class="review-container">
+                            <?php echo htmlspecialchars($movie['review']); ?>                        </div>
                         <a class="button" href="edit_review.php?movie_id=<?php echo $movie['id']; ?>">Edit Review</a>
                     </div>
                 <?php endwhile; ?>
