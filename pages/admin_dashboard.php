@@ -66,41 +66,71 @@ while ($row = $recent_users_result->fetch_assoc()) {
         </section>
 
         <!-- Movies by Genre Chart -->
-        <section class="chart-section">
+        <section class="chart-section" style="height: 400px; display: flex; justify-content: center; align-items: center;">
             <h2>Movies by Genre</h2>
-            <canvas id="genreChart" style="max-width: 600px; width: 100%; height: 300px; margin: 0 auto;"></canvas>
-            <script>
-                var ctx = document.getElementById('genreChart').getContext('2d');
-                var genreChart = new Chart(ctx, {
-                    type: 'pie',
-                    data: {
-                        labels: <?php echo json_encode(array_column($genres, 'genre')); ?>,
-                        datasets: [{
-                            label: 'Movies by Genre',
-                            data: <?php echo json_encode(array_column($genres, 'genre_count')); ?>,
-                            backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#A1FF33'],
-                            borderColor: '#fff',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        responsive: true, // Make the chart responsive
-                        maintainAspectRatio: true, // Maintain aspect ratio, prevent stretching
-                        plugins: {
-                            legend: {
-                                position: 'top',
-                            },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(tooltipItem) {
-                                        return tooltipItem.label + ': ' + tooltipItem.raw;
+            <div style="width: 600px; max-width: 100%; height: 100%;">
+                <canvas id="genreChart"></canvas>
+                <script>
+                    var ctx = document.getElementById('genreChart').getContext('2d');
+                    var genreChart = new Chart(ctx, {
+                        type: 'pie',
+                        data: {
+                            labels: <?php echo json_encode(array_column($genres, 'genre')); ?>,
+                            datasets: [{
+                                label: 'Movies by Genre',
+                                data: <?php echo json_encode(array_column($genres, 'genre_count')); ?>,
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.8)',
+                                    'rgba(54, 162, 235, 0.8)',
+                                    'rgba(255, 206, 86, 0.8)',
+                                    'rgba(75, 192, 192, 0.8)',
+                                    'rgba(153, 102, 255, 0.8)',
+                                    'rgba(255, 159, 64, 0.8)'
+                                ],
+                                hoverBackgroundColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderColor: '#fff',
+                                borderWidth: 2
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: true, /* Prevent infinite resizing */
+                            plugins: {
+                                legend: {
+                                    position: 'top',
+                                    labels: {
+                                        color: '#ddd',
+                                        font: {
+                                            size: 14,
+                                            family: 'Poppins, sans-serif'
+                                        }
+                                    }
+                                },
+                                tooltip: {
+                                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                                    bodyColor: '#fff',
+                                    titleColor: '#f1c40f',
+                                    padding: 10,
+                                    callbacks: {
+                                        label: function(tooltipItem) {
+                                            let genre = tooltipItem.label;
+                                            let count = tooltipItem.raw;
+                                            return genre + ': ' + count + ' movies';
+                                        }
                                     }
                                 }
                             }
                         }
-                    }
-                });
-            </script>
+                    });
+                </script>
+            </div>
         </section>
 
 
