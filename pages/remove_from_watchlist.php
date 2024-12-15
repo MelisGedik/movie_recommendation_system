@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="confirmation-message">
         <h1><?php echo htmlspecialchars($message); ?></h1>
-        <p><a href="watchlist.php">Go back to Watchlist</a></p>
+        <p><a href="watchlist.php" >Go back to Watchlist</a></p>
     </div>
 </body>
 </html>
