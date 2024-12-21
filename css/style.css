@@ -5,6 +5,8 @@ body {
     margin: 0;
     padding: 0;
     color: white;
+    padding-left: 20px; /* Adds padding on the left */
+    box-sizing: border-box;
 }
 
 /* Background Shapes */
@@ -64,21 +66,21 @@ body {
 /* Search Form */
 .search-form {
     display: flex;
+    justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    padding: 5px;
-    backdrop-filter: blur(10px);
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .search-form input {
-    padding: 8px;
+    flex: 1;
+    padding: 10px;
     border: none;
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0.2);
     color: white;
     outline: none;
-    width: 250px;
+    font-size: 1rem;
 }
 
 .search-form input::placeholder {
@@ -86,17 +88,19 @@ body {
 }
 
 .search-form button {
-    padding: 8px 15px;
+    padding: 10px 20px;
     background-color: #23a2f6;
     color: white;
     border: none;
     border-radius: 5px;
+    font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.search-form button:hover {
+.search-form button:hover, .movie-card .button:hover, .movie-details button:hover, .center-content .button:hover , .movie-card button:hover , .update-profile-container button:hover {
     background-color: #1845ad;
+    transform: scale(1.05);
 }
 
 /* Movie List Container */
@@ -132,9 +136,9 @@ body {
 
 .movie-card img {
     max-width: 100%;
-    height: 250px; /* Keep poster heights consistent */
+    height: 250px;
     border-radius: 10px;
-    object-fit: cover; /* Prevent cropping */
+    object-fit: cover;
     margin-bottom: 10px;
 }
 
@@ -158,18 +162,13 @@ body {
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: auto; /* Push button to the bottom */
+    margin-top: auto;
     display: inline-block;
-}
-
-.movie-card .button:hover {
-    background-color: #1845ad;
-    transform: scale(1.05);
 }
 
 /* Movie Details Page */
 .movie-details {
-    background-color: rgba(255, 255, 255, 0.1); /* Dark translucent background */
+    background-color: rgba(255, 255, 255, 0.1);
     border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     padding: 30px;
@@ -208,7 +207,7 @@ body {
     line-height: 1.6;
 }
 
-.movie-info strong {
+.movie-info strong, .review strong {
     color: #23a2f6;
 }
 
@@ -256,10 +255,6 @@ body {
     text-align: left;
     color: white;
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
-}
-
-.review strong {
-    color: #23a2f6;
 }
 
 .review hr {
@@ -316,19 +311,14 @@ body {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.movie-details button:hover {
-    background-color: #1845ad;
-    transform: scale(1.05);
-}
-
 /* Centered Content */
 .center-content {
     background-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     padding: 30px;
     border-radius: 15px;
-    max-width: 500px;
-    margin: 50px auto;
+    max-width: 600px; /* Adjusted width for better centering */
+    margin: 50px auto; /* Center horizontally and add vertical space */
     text-align: center;
     box-shadow: 0 4px 6px rgba(255, 255, 255, 0.2);
 }
@@ -352,11 +342,6 @@ body {
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.center-content .button:hover {
-    background-color: #1845ad;
-    transform: scale(1.05);
 }
 
 /* Rating and Review Form Styling */
@@ -427,11 +412,6 @@ body {
     color: white;
     background-color: #23a2f6;
     transition: background-color 0.3s, transform 0.2s;
-}
-
-.movie-card button:hover {
-    background-color: #1845ad;
-    transform: scale(1.05);
 }
 
 .movie-card .remove-button {
@@ -575,12 +555,6 @@ body {
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* General Page Padding */
-body {
-    padding-left: 20px; /* Adds padding on the left */
-    box-sizing: border-box;
-}
-
 /* My Reviews Container */
 .my-reviews {
     max-width: 1000px;
@@ -706,7 +680,200 @@ body {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.update-profile-container button:hover {
+/* Friends Container */
+.friends-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    color: #ccc;
+}
+
+/* Friends List */
+.friends-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.friend-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.friend-card span {
+    font-size: 1rem;
+    color: #fff;
+}
+
+.friend-card .button {
+    padding: 8px 12px;
+    background-color: #23a2f6;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.friend-card .button:hover {
     background-color: #1845ad;
-    transform: scale(1.05);
+}
+
+/* Friendship Actions */
+.friendship-actions {
+    margin-top: 20px;
+}
+
+.friendship-actions .button {
+    background-color: #23a2f6;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.friendship-actions .button:hover {
+    background-color: #1845ad;
+}
+
+.manage-requests {
+    margin-left: 350px;
+    background: none;
+    text-align: center; /* Center-align text inside */
+    font-weight: 300;
+}
+
+.manage-requests .button {
+    background-color: #23a2f6;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.movie-selection {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Exactly 4 columns */
+    gap: 10px; /* Space between items */
+    max-height: 300px; /* Control the height of the scrollable area */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 2px solid rgba(35, 162, 246, 0.7); /* Improved border styling */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.2); /* Slightly darker background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+/* Movie Item Styling */
+.movie-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 107px; /* Fixed width for uniformity */
+    height: 180px; /* Fixed height for uniformity */
+    box-sizing: border-box; /* Include padding in dimensions */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.movie-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(35, 162, 246, 0.4);
+}
+
+/* Movie Poster */
+.movie-item img {
+    width: 80px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+/* Movie Title */
+.movie-item span {
+    font-size: 0.8rem;
+    color: #ccc;
+    height: 30px; /* Fixed height for title */
+    line-height: 1.2;
+    overflow: hidden; /* Prevent text overflow */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+    display: block;
+    width: 100%; /* Ensure the text stays within the container */
+}
+
+/* Checkbox */
+.movie-item input[type="checkbox"] {
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.search-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 50px auto;
+    box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+.search-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center-aligns content horizontally */
+    justify-content: center; /* Center-aligns content vertically */
+    margin: 0 auto; /* Centers the container within the page */
+    text-align: center;
+}
+
+.search-results h1 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+
+.search-results li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically */
+    align-items: center; /* Centers content horizontally */
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 200px;
+    height: 120px; /* Adjusted height for better proportions */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover effect */
+}
+
+.search-results li:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+}
+
+.search-results .button {
+    margin-top: 10px; /* Space between the username and button */
 }
