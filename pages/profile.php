@@ -1,6 +1,5 @@
 <?php
 session_start();
-include '../includes/session_check.php'; // Ensure user is logged in
 include '../includes/db_connect.php'; // Database connection
 
 // Fetch user details
