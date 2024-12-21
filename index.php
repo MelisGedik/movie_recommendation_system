@@ -10,7 +10,17 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'];
+$sql_pending_requests = "SELECT COUNT(*) AS pending_count FROM friends WHERE friend_id = ? AND status = 'pending'";
+$stmt_pending_requests = $conn->prepare($sql_pending_requests);
+$stmt_pending_requests->bind_param("i", $user_id);
+$stmt_pending_requests->execute();
+$result_pending_requests = $stmt_pending_requests->get_result();
 
+if ($row = $result_pending_requests->fetch_assoc()) {
+    $pending_requests = $row['pending_count'];
+} else {
+    $pending_requests = 0;
+}
 // Fetch user's selected movies and their genres
 $sql = "SELECT m.genre FROM user_movie_selections ums
         JOIN movies m ON ums.movie_id = m.id
@@ -69,6 +79,8 @@ if (count($recommended_movies) < 10) {
     $recommended_movies = array_merge($recommended_movies, $additional_movies);
 }
 
+
+
 // Fetch top-rated movies
 $sql = "SELECT * FROM movies ORDER BY rating_avg DESC LIMIT 5";
 $result = $conn->query($sql);
@@ -80,12 +92,82 @@ $top_rated_movies = $result->fetch_all(MYSQLI_ASSOC);
 <head>
     <title>Homepage</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Popup Styling */
+        #friendRequestPopup {
+            display: none;
+            position: fixed;
+            top: 80px; /* Adjusted position to be below the navbar */
+            right: 20px;
+            background-color: #444;
+            color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            text-align: center;
+        }
+        #friendRequestPopup button {
+            background-color: #ff5555;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        #friendRequestPopup button:hover {
+            background-color: #ff3333;
+        }
+        #friendRequestPopup a {
+            background-color: #23a2f6;
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        #friendRequestPopup a:hover {
+            background-color: #1845ad;
+        }
+    </style>
 </head>
 <body>
 <?php include 'includes/navbar.php'; ?>
 
 <h1>Welcome to the Movie Recommendation System</h1>
 
+<!-- Friend Request Popup -->
+<?php if ($pending_requests > 0): ?>
+<div id="friendRequestPopup">
+    <p>You have <?php echo $pending_requests; ?> pending friend request(s)!</p>
+    <a href="pages/manage_requests.php">Manage Requests</a>
+    <button onclick="closePopup()">Close</button>
+</div>
+<?php endif; ?>
+
+
+<script>
+    // Show popup on page load
+    window.onload = function() {
+        var popup = document.getElementById('friendRequestPopup');
+        if (popup) {
+            popup.style.display = 'block';
+        }
+    };
+
+    // Close popup
+    function closePopup() {
+        var popup = document.getElementById('friendRequestPopup');
+        if (popup) {
+            popup.style.display = 'none';
+        }
+    }
+</script>
+
+<!-- Recommended Movies -->
 <h2>Recommended Movies</h2>
 <div class="movie-list">
     <?php if (!empty($recommended_movies)) { ?>
@@ -115,6 +197,7 @@ $top_rated_movies = $result->fetch_all(MYSQLI_ASSOC);
         </div>
     <?php } ?>
 </div>
+
 
 </body>
 </html>
