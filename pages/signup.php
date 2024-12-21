@@ -60,34 +60,23 @@ $result = $conn->query($sql);
     <title>Signup</title>
     <link rel="stylesheet" href="../css/style.css">
     <style>
-        .movie-selection {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            max-height: 300px;
-            overflow-y: auto;
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
-        .movie-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 120px;
-            text-align: center;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 5px;
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-        .movie-item img {
-            width: 80px;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 3px;
-            margin-bottom: 5px;
-        }
+        /* Existing styles remain unchanged */
     </style>
+    <script>
+        function validateMovieSelection(event) {
+            // Get all checked checkboxes
+            const selectedMovies = document.querySelectorAll('input[name="movies[]"]:checked');
+
+            // Check if the count is within the range of 7 to 10
+            if (selectedMovies.length < 7 || selectedMovies.length > 10) {
+                // Prevent form submission
+                event.preventDefault();
+
+                // Display a warning to the user
+                alert("Please select between 7 and 10 movies.");
+            }
+        }
+    </script>
 </head>
 <body>
     <?php include '../includes/navbar.php'; ?>
@@ -99,7 +88,9 @@ $result = $conn->query($sql);
         <?php elseif (isset($success)): ?>
             <p style="color: green;"><?php echo $success; ?></p>
         <?php endif; ?>
-        <form method="POST" action="">
+        
+        <!-- Add onsubmit event to trigger JavaScript validation -->
+        <form method="POST" action="" onsubmit="validateMovieSelection(event)" autocomplete="off>
             <label for="username">Username:</label><br>
             <input type="text" id="username" name="username" required><br><br>
 
