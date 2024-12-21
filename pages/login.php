@@ -25,6 +25,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['username'] = $user['username'];
             $_SESSION['role'] = $user['role']; // Store the user role (admin or user)
 
+            // Count pending friend requests
+            $sql = "SELECT COUNT(*) AS pending_requests FROM friends 
+                    WHERE friend_id = ? AND status = 'pending'";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $user['id']);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $friend_requests = $result->fetch_assoc();
+            $_SESSION['pending_requests'] = $friend_requests['pending_requests'] ?? 0;
+
             // Redirect to the appropriate dashboard
             if ($user['role'] == 'admin') {
                 header("Location: ../pages/admin_dashboard.php");
@@ -56,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php if (isset($error)): ?>
             <p style="color: red;"><?php echo htmlspecialchars($error); ?></p>
         <?php endif; ?>
-        <form method="POST" action="">
+        <form method="POST" action="" autocomplete="off>
             <label for="email">Email:</label><br>
             <input type="email" id="email" name="email" required><br><br>
 
